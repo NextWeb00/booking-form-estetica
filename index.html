@@ -2,97 +2,83 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prenota Trattamento</title>
+  <title>Prenota il tuo trattamento</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f2f2f2;
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f5f5;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
-
-    .container {
-      background: #fff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
       width: 100%;
-      max-width: 420px;
     }
-
     h2 {
-      margin-bottom: 24px;
       text-align: center;
-      color: #222;
+      margin-bottom: 1.5rem;
+      color: #333;
     }
-
     input, select, button {
       width: 100%;
-      padding: 12px;
-      margin-top: 12px;
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
+      font-size: 1rem;
     }
-
     button {
-      background-color: #000;
+      background: #111;
       color: white;
       border: none;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
     }
-
     button:hover {
-      background-color: #444;
+      background: #333;
     }
   </style>
 </head>
 <body>
-
-  <div class="container">
+  <form class="card" action="submit.php" method="POST">
     <h2>Prenota il tuo trattamento</h2>
-    <form action="https://estetica100000.wuaze.com/submit.php" method="POST">
-      <input type="text" name="nome" placeholder="Nome e Cognome" required>
-      <input type="tel" name="telefono" placeholder="Telefono" required>
-
-      <select name="trattamento" required>
-        <option value="">Trattamento</option>
-        <option value="Ricostruzione">Ricostruzione</option>
-        <option value="Laser">Laser</option>
-        <option value="Ceretta">Ceretta</option>
-      </select>
-
-      <select name="estetista" required>
-        <option value="">Estetista</option>
-        <option value="Susanna">Susanna</option>
-        <option value="Sara">Sara</option>
-        <option value="Chiara">Chiara</option>
-      </select>
-
-      <input type="date" name="data" required>
-
-      <select name="ora" required>
-        <option value="">-- Orario --</option>
-        <script>
-          const orari = [];
-          for (let h = 9; h <= 18; h++) {
-            orari.push(h.toString().padStart(2, '0') + ':00');
-            if (h < 18) orari.push(h.toString().padStart(2, '0') + ':30');
-          }
-          orari.forEach(o => {
-            document.write(`<option value="${o}">${o}</option>`);
-          });
-        </script>
-      </select>
-
-      <button type="submit">Prenota ora</button>
-    </form>
-  </div>
-
+    <input type="text" name="nome" placeholder="Nome e Cognome" required>
+    <input type="tel" name="telefono" placeholder="Telefono" required>
+    <select name="trattamento" required>
+      <option value="">Trattamento</option>
+      <option value="Ricostruzione">Ricostruzione</option>
+      <option value="Laser">Laser</option>
+      <option value="Ceretta">Ceretta</option>
+    </select>
+    <select name="estetista" required>
+      <option value="">Estetista</option>
+      <option value="Susanna">Susanna</option>
+      <option value="Sara">Sara</option>
+      <option value="Chiara">Chiara</option>
+    </select>
+    <input type="date" name="data" required>
+    <select name="ora" required>
+      <option value="">-- Orario --</option>
+      <!-- Genera orari 9:00 - 18:30 -->
+      <script>
+        const orari = [];
+        for (let h = 9; h <= 18; h++) {
+          orari.push(`${h.toString().padStart(2, '0')}:00`);
+          if (h !== 18) orari.push(`${h.toString().padStart(2, '0')}:30`);
+        }
+        document.currentScript.insertAdjacentHTML('afterend',
+          orari.map(o => `<option value="${o}">${o}</option>`).join('')
+        );
+      </script>
+    </select>
+    <button type="submit">Prenota ora</button>
+  </form>
 </body>
 </html>

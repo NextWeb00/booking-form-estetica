@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Prenota il tuo trattamento</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f7f7f7;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      width: 300px;
+    }
+    input, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: black;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <form action="submit.php" method="POST">
+    <h2>Prenota il tuo trattamento</h2>
+    <input type="text" name="nome" placeholder="Nome e Cognome" required>
+    <input type="tel" name="telefono" placeholder="Telefono" required>
+
+    <select name="trattamento" required>
+      <option value="">Trattamento</option>
+      <option value="Ricostruzione">Ricostruzione</option>
+      <option value="Laser">Laser</option>
+      <option value="Ceretta">Ceretta</option>
+    </select>
+
+    <select name="estetista" required>
+      <option value="">Estetista</option>
+      <option value="Susanna">Susanna</option>
+      <option value="Sara">Sara</option>
+      <option value="Chiara">Chiara</option>
+    </select>
+
+    <input type="date" name="data" required>
+
+    <select name="ora" required>
+      <option value="">-- Orario --</option>
+      <option value="09:00">09:00</option>
+      <option value="09:30">09:30</option>
+      <option value="10:00">10:00</option>
+      <option value="10:30">10:30</option>
+      <option value="11:00">11:00</option>
+      <option value="11:30">11:30</option>
+      <option value="12:00">12:00</option>
+      <option value="12:30">12:30</option>
+      <option value="13:00">13:00</option>
+      <option value="13:30">13:30</option>
+      <option value="14:00">14:00</option>
+      <option value="14:30">14:30</option>
+      <option value="15:00">15:00</option>
+      <option value="15:30">15:30</option>
+      <option value="16:00">16:00</option>
+      <option value="16:30">16:30</option>
+      <option value="17:00">17:00</option>
+      <option value="17:30">17:30</option>
+      <option value="18:00">18:00</option>
+      <option value="18:30">18:30</option>
+    </select>
+
+    <button type="submit">Prenota ora</button>
+  </form>
+</body>
+</html>

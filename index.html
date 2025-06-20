@@ -2,84 +2,97 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Prenota il tuo trattamento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prenota Trattamento</title>
   <style>
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f2f2;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #f7f7f7;
     }
-    form {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ccc;
-      width: 300px;
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
     }
+
+    h2 {
+      margin-bottom: 24px;
+      text-align: center;
+      color: #222;
+    }
+
     input, select, button {
       width: 100%;
-      margin: 10px 0;
-      padding: 10px;
+      padding: 12px;
+      margin-top: 12px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-size: 15px;
     }
+
     button {
-      background: black;
+      background-color: #000;
       color: white;
       border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #444;
     }
   </style>
 </head>
 <body>
-  <form action="submit.php" method="POST">
+
+  <div class="container">
     <h2>Prenota il tuo trattamento</h2>
-    <input type="text" name="nome" placeholder="Nome e Cognome" required>
-    <input type="tel" name="telefono" placeholder="Telefono" required>
+    <form action="https://estetica100000.wuaze.com/submit.php" method="POST">
+      <input type="text" name="nome" placeholder="Nome e Cognome" required>
+      <input type="tel" name="telefono" placeholder="Telefono" required>
 
-    <select name="trattamento" required>
-      <option value="">Trattamento</option>
-      <option value="Ricostruzione">Ricostruzione</option>
-      <option value="Laser">Laser</option>
-      <option value="Ceretta">Ceretta</option>
-    </select>
+      <select name="trattamento" required>
+        <option value="">Trattamento</option>
+        <option value="Ricostruzione">Ricostruzione</option>
+        <option value="Laser">Laser</option>
+        <option value="Ceretta">Ceretta</option>
+      </select>
 
-    <select name="estetista" required>
-      <option value="">Estetista</option>
-      <option value="Susanna">Susanna</option>
-      <option value="Sara">Sara</option>
-      <option value="Chiara">Chiara</option>
-    </select>
+      <select name="estetista" required>
+        <option value="">Estetista</option>
+        <option value="Susanna">Susanna</option>
+        <option value="Sara">Sara</option>
+        <option value="Chiara">Chiara</option>
+      </select>
 
-    <input type="date" name="data" required>
+      <input type="date" name="data" required>
 
-    <select name="ora" required>
-      <option value="">-- Orario --</option>
-      <option value="09:00">09:00</option>
-      <option value="09:30">09:30</option>
-      <option value="10:00">10:00</option>
-      <option value="10:30">10:30</option>
-      <option value="11:00">11:00</option>
-      <option value="11:30">11:30</option>
-      <option value="12:00">12:00</option>
-      <option value="12:30">12:30</option>
-      <option value="13:00">13:00</option>
-      <option value="13:30">13:30</option>
-      <option value="14:00">14:00</option>
-      <option value="14:30">14:30</option>
-      <option value="15:00">15:00</option>
-      <option value="15:30">15:30</option>
-      <option value="16:00">16:00</option>
-      <option value="16:30">16:30</option>
-      <option value="17:00">17:00</option>
-      <option value="17:30">17:30</option>
-      <option value="18:00">18:00</option>
-      <option value="18:30">18:30</option>
-    </select>
+      <select name="ora" required>
+        <option value="">-- Orario --</option>
+        <script>
+          const orari = [];
+          for (let h = 9; h <= 18; h++) {
+            orari.push(h.toString().padStart(2, '0') + ':00');
+            if (h < 18) orari.push(h.toString().padStart(2, '0') + ':30');
+          }
+          orari.forEach(o => {
+            document.write(`<option value="${o}">${o}</option>`);
+          });
+        </script>
+      </select>
 
-    <button type="submit">Prenota ora</button>
-  </form>
+      <button type="submit">Prenota ora</button>
+    </form>
+  </div>
+
 </body>
 </html>

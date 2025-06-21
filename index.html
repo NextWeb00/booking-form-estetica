@@ -1,123 +1,110 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prenota il tuo trattamento</title>
+  <meta charset="UTF-8">
+  <title>Prenota Trattamento Olistico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #fdfdfd;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
+      font-family: sans-serif;
+      background: #f5f5f5;
     }
-
     .container {
-      max-width: 400px;
-      background-color: #fff;
-      padding: 30px;
-      margin-top: 50px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
+      max-width: 500px;
+      margin: 4rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
     h2 {
       text-align: center;
-      margin-bottom: 20px;
-      color: #333;
+      margin-bottom: 2rem;
     }
-
     label {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 0.3rem;
       font-weight: bold;
     }
-
-    input,
-    select {
+    input, select {
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 6px;
+      margin-bottom: 1.2rem;
       border: 1px solid #ccc;
-      font-size: 16px;
+      border-radius: 6px;
     }
-
     button {
-      width: 100%;
+      background-color: #006b55;
+      color: white;
       padding: 12px;
-      background-color: #000;
-      color: #fff;
+      width: 100%;
       border: none;
       border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.2s ease;
     }
-
     button:hover {
-      background-color: #444;
+      background-color: #005142;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Prenota il tuo trattamento</h2>
-    <form action="invia.php" method="POST">
+    <h2>Prenota il tuo Trattamento</h2>
+    <form action="submit.php" method="POST">
       <label for="nome">Nome e Cognome</label>
-      <input type="text" id="nome" name="nome" required />
+      <input type="text" name="nome" id="nome" required>
 
       <label for="telefono">Telefono</label>
-      <input type="text" id="telefono" name="telefono" required />
+      <input type="tel" name="telefono" id="telefono" required>
 
       <label for="trattamento">Trattamento</label>
-      <select id="trattamento" name="trattamento" required>
-        <option value="">Seleziona trattamento</option>
-        <option value="Taglio">Taglio</option>
-        <option value="Piega">Piega</option>
-        <option value="Colore">Colore</option>
-        <option value="Shampoo + Piega">Shampoo + Piega</option>
-        <option value="Colpi di Sole">Colpi di Sole</option>
+      <select name="trattamento" id="trattamento" required>
+        <option value="">-- Seleziona --</option>
+        <option>Massaggio rilassante</option>
+        <option>Riflessologia plantare</option>
+        <option>Aromaterapia</option>
+        <option>Trattamento Reiki</option>
+        <option>Massaggio decontratturante</option>
+        <option>Pulizia del viso olistica</option>
+        <option>Campane tibetane</option>
       </select>
 
-      <label for="estetista">Parrucchiere</label>
-      <select id="estetista" name="estetista" required>
-        <option value="">Seleziona parrucchiere</option>
-        <option value="Susanna">Susanna</option>
-        <option value="Sara">Sara</option>
-        <option value="Chiara">Chiara</option>
+      <label for="operatore">Operatore</label>
+      <select name="operatore" id="operatore" required>
+        <option value="">-- Seleziona --</option>
+        <option>Lucia</option>
+        <option>Marco</option>
       </select>
 
       <label for="data">Data</label>
-      <input type="date" id="data" name="data" required />
+      <input type="date" name="data" id="data" required>
 
-      <label for="ora">Orario</label>
-      <select id="ora" name="ora" required>
-        <option value="">-- Orario --</option>
-        <option value="09:00">09:00</option>
-        <option value="09:30">09:30</option>
-        <option value="10:00">10:00</option>
-        <option value="10:30">10:30</option>
-        <option value="11:00">11:00</option>
-        <option value="11:30">11:30</option>
-        <option value="12:00">12:00</option>
-        <option value="12:30">12:30</option>
-        <option value="13:00">13:00</option>
-        <option value="13:30">13:30</option>
-        <option value="14:00">14:00</option>
-        <option value="14:30">14:30</option>
-        <option value="15:00">15:00</option>
-        <option value="15:30">15:30</option>
-        <option value="16:00">16:00</option>
-        <option value="16:30">16:30</option>
-        <option value="17:00">17:00</option>
-        <option value="17:30">17:30</option>
-        <option value="18:00">18:00</option>
-        <option value="18:30">18:30</option>
+      <label for="ora">Ora</label>
+      <select name="ora" id="ora" required>
+        <option value="">-- Seleziona --</option>
+        <!-- Orari fissi -->
+        <option>09:00</option>
+        <option>09:30</option>
+        <option>10:00</option>
+        <option>10:30</option>
+        <option>11:00</option>
+        <option>11:30</option>
+        <option>12:00</option>
+        <option>12:30</option>
+        <option>13:00</option>
+        <option>13:30</option>
+        <option>14:00</option>
+        <option>14:30</option>
+        <option>15:00</option>
+        <option>15:30</option>
+        <option>16:00</option>
+        <option>16:30</option>
+        <option>17:00</option>
+        <option>17:30</option>
+        <option>18:00</option>
+        <option>18:30</option>
       </select>
 
       <button type="submit">Prenota ora</button>

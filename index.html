@@ -3,92 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prenotazione</title>
+  <title>Prenota il tuo trattamento</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: white;
+      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px 20px;
+      padding: 0;
+      background-color: #fdfdfd;
       display: flex;
       justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
 
-    form {
-      background: #fff;
+    .container {
+      max-width: 400px;
+      background-color: #fff;
       padding: 30px;
+      margin-top: 50px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      max-width: 420px;
-      width: 100%;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 25px;
-      font-size: 1.6em;
+      margin-bottom: 20px;
+      color: #333;
     }
 
-    input, select, button {
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    select {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 16px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      box-sizing: border-box;
+      font-size: 16px;
     }
 
     button {
-      background: black;
-      color: white;
+      width: 100%;
+      padding: 12px;
+      background-color: #000;
+      color: #fff;
       border: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
     button:hover {
-      background: #222;
+      background-color: #444;
     }
   </style>
 </head>
 <body>
-  <form action="submit.php" method="POST">
+  <div class="container">
     <h2>Prenota il tuo trattamento</h2>
-    <input type="text" name="nome" placeholder="Nome e Cognome" required />
-    <input type="tel" name="telefono" placeholder="Telefono" required />
+    <form action="invia.php" method="POST">
+      <label for="nome">Nome e Cognome</label>
+      <input type="text" id="nome" name="nome" required />
 
-    <select name="trattamento" required>
-      <option value="">Trattamento</option>
-      <option value="Ricostruzione">Ricostruzione</option>
-      <option value="Laser">Laser</option>
-      <option value="Ceretta">Ceretta</option>
-    </select>
+      <label for="telefono">Telefono</label>
+      <input type="text" id="telefono" name="telefono" required />
 
-    <select name="estetista" required>
-      <option value="">Estetista</option>
-      <option value="Susanna">Susanna</option>
-      <option value="Sara">Sara</option>
-      <option value="Chiara">Chiara</option>
-    </select>
+      <label for="trattamento">Trattamento</label>
+      <select id="trattamento" name="trattamento" required>
+        <option value="">Seleziona trattamento</option>
+        <option value="Taglio">Taglio</option>
+        <option value="Piega">Piega</option>
+        <option value="Colore">Colore</option>
+        <option value="Shampoo + Piega">Shampoo + Piega</option>
+        <option value="Colpi di Sole">Colpi di Sole</option>
+      </select>
 
-    <input type="date" name="data" required />
+      <label for="estetista">Parrucchiere</label>
+      <select id="estetista" name="estetista" required>
+        <option value="">Seleziona parrucchiere</option>
+        <option value="Susanna">Susanna</option>
+        <option value="Sara">Sara</option>
+        <option value="Chiara">Chiara</option>
+      </select>
 
-    <select name="ora" required>
-      <option value="">-- Orario --</option>
-      <script>
-        const orari = [];
-        for (let h = 9; h <= 18; h++) {
-          orari.push(h.toString().padStart(2, '0') + ":00");
-          if (h !== 18) orari.push(h.toString().padStart(2, '0') + ":30");
-        }
-        orari.forEach(o => {
-          document.write(`<option value="${o}">${o}</option>`);
-        });
-      </script>
-    </select>
+      <label for="data">Data</label>
+      <input type="date" id="data" name="data" required />
 
-    <button type="submit">Prenota ora</button>
-  </form>
+      <label for="ora">Orario</label>
+      <select id="ora" name="ora" required>
+        <option value="">-- Orario --</option>
+        <option value="09:00">09:00</option>
+        <option value="09:30">09:30</option>
+        <option value="10:00">10:00</option>
+        <option value="10:30">10:30</option>
+        <option value="11:00">11:00</option>
+        <option value="11:30">11:30</option>
+        <option value="12:00">12:00</option>
+        <option value="12:30">12:30</option>
+        <option value="13:00">13:00</option>
+        <option value="13:30">13:30</option>
+        <option value="14:00">14:00</option>
+        <option value="14:30">14:30</option>
+        <option value="15:00">15:00</option>
+        <option value="15:30">15:30</option>
+        <option value="16:00">16:00</option>
+        <option value="16:30">16:30</option>
+        <option value="17:00">17:00</option>
+        <option value="17:30">17:30</option>
+        <option value="18:00">18:00</option>
+        <option value="18:30">18:30</option>
+      </select>
+
+      <button type="submit">Prenota ora</button>
+    </form>
+  </div>
 </body>
 </html>
